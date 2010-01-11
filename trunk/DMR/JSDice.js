@@ -78,12 +78,12 @@ function rollDice(hit, dmg, name) {
     var dmgel = document.getElementById(name+'_damage');
     var dmgdiv = document.getElementById(name+'_damagediv');
     
-    var hitdata = roll(hit);
+    var hitdata = roll('d20+'+hit);
     var dmgdata = roll(dmg);
     if (hitdata) {
         var hitSum = resultSum(hitdata);
         var hitStr = resultStr(hitdata);
-        hitel.innerHTML = '<div class="roll_result"><b>Hit:</b>' + hitSum + '</div>';
+        hitel.innerHTML = '<div class="roll_result"><b>Hit:</b>' + hitSum +((hitSum-20)==hit?' <a class="Crit">CRIT</a>':'')+'</div>';
         hitdiv.innerHTML = hitStr;
     }
     else {
