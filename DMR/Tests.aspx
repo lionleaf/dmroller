@@ -28,7 +28,7 @@
             <asp:Button ID="Generate" runat="server" Text="Generate Monster" 
                 onclick="Generate_Click" />
                               
-            <!-- Test of the monster layout -->
+            <!-- Test of the monster layout
             <div id="Monsterdiv" class="Monster" >
             <span class="Drag" onmousedown="dragStart(event, 'Monsterdiv')">Drag me</span>
             <ul class="Monster">
@@ -44,7 +44,7 @@
             <li class="Damage">20=8[d8]+5[d9]+7</li>
             </ul>
             </div>
-            
+            -->
             </ContentTemplate>
             </asp:UpdatePanel>
                       
