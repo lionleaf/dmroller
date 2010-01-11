@@ -50,7 +50,7 @@ public class Monster
         foreach (Ability a in _abilities)
         {
             sb.Append("<li class=\"Abilityname\">" + a.Name);
-			sb.Append("<a style=\"float:right\" class=\"Roll\" href=\"javascript:rollDice('d20+" + a.HitBonus + "','" + a.DamageDice.String + "','" + _name + "')\">Roll!</a></li>");
+			sb.Append("<a style=\"float:right\" class=\"Roll\" href=\"javascript:rollDice('" + a.HitBonus + "','" + a.DamageDice.String + "','" + _name + "')\">Roll!</a></li>");
             sb.Append("<li class=\"Ability\">+" + a.HitBonus + " vs AC;" + a.DamageDice.String + "</li>");
         }
 

@@ -62,3 +62,9 @@ li.Damage, li.Hit
 	color:White;
 	font-weight:bold;
 }
+
+a.Crit
+{
+	font-size:large;
+	color:Red;
+}
