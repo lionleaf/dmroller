@@ -1,0 +1,42 @@
+﻿body
+{
+
+}
+
+div.Monster{
+background-color:#E0EEE0;
+width:250px;
+position:relative;
+}
+
+span.Drag
+{
+    float:right;
+    width:40px;
+}
+
+
+ul.Monster
+{
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
+}
+
+li.Monstername
+{
+    font-size:larger;
+    font-weight:bolder;
+    background-color:Gray;
+}
+li.Abilityname
+{
+    font-size:large;
+    font-weight:bold;
+    background-color:Gray;
+}
+li.Ability
+{
+    
+    margin-left:20px;
+}
