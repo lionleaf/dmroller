@@ -27,7 +27,8 @@ li.Monstername
 {
     font-size:larger;
     font-weight:bolder;
-    background-color:Gray;
+    background-color:Green;
+    color:White;
 }
 li.Abilityname
 {
@@ -37,6 +38,5 @@ li.Abilityname
 }
 li.Ability
 {
-    
     margin-left:20px;
 }
