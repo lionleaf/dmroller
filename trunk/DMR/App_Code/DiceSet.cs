@@ -16,18 +16,27 @@ public class DiceSet
     private Regex _br = new Regex(@"[+-][0-9]*"); //Regex to get out the static bonus to the roll 
     private List<Dice> _dice = new List<Dice>(); //List of all the dice in the DiceSet
     private int bonus = 0; //The static bonus to the roll
-    private int _lastSum = -1; 
+    private int _lastSum = -1;
     private string _diceString; //The string of the DiceSet, for instance "2d6+2d4+7"
     #endregion
+
+    public int HitBonus
+    {
+        get { return bonus; }
+    }
+    public string String
+    {
+        get { return _diceString; }
+    }
 
     #region Constructor Overloads
 
     public DiceSet(string DiceString)
-	{
+    {
         _diceString = DiceString;
         DecodeString(_diceString);
 
-	}
+    }
 
     public DiceSet(Dice[] dice, int bonus)
     {
@@ -80,7 +89,7 @@ public class DiceSet
         //Here we should add logic to check whether the input is valid.
 
 
-        int dPos = -1; 
+        int dPos = -1;
         bool positive;
         int numberOfDice;
         int diceSize;
@@ -108,22 +117,22 @@ public class DiceSet
             }
             y++;
         }
-        
-        
+
+
         if (dPos == 1) //Means 1 die. Remember here that every string starts with + or -.
             numberOfDice = 1;
         else
             numberOfDice = Convert.ToInt32(input.Substring(1, dPos - 1));
         diceSize = Convert.ToInt32(input.Substring(dPos + 1, input.Length - (dPos + 1)));
-        
+
         //Add the dice
 
         for (int i = 0; i < numberOfDice; i++)
         {
             _dice.Add(new Dice(diceSize));
         }
-        
-        
+
+
         return true; //it worked!
     }
     #endregion
@@ -149,7 +158,7 @@ public class DiceSet
             sb.Remove(sb.Length - 1, 1); //Remove the last + sign if there is no bonus.
         }
 
-        return _lastSum.ToString()+": "+sb.ToString();
+        return _lastSum.ToString() + ": " + sb.ToString();
     }
     #endregion
 }

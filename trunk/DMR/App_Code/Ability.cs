@@ -9,6 +9,7 @@ using System.Web;
 public class Ability
 {
     #region Private Members
+    private string _name;
     private DiceSet _hitDie;
     private DiceSet _dmgDice;
     private DiceSet _extraDmg;
@@ -17,17 +18,32 @@ public class Ability
     #endregion
 
     #region Properties
+    public string Name
+    {
+        get { return _name; }
+        set { _name = value; }
+    }
+    public int HitBonus
+    {
+        get { return _hitDie.HitBonus; }
+    }
+    public DiceSet DamageDice
+    {
+        get { return _dmgDice; }
+    }
+
 
     #endregion
 
     #region Constructors
-    public Ability(DiceSet HitDie, DiceSet DmgDice)
-	{
+    public Ability(string Name, DiceSet HitDie, DiceSet DmgDice)
+    {
+        _name = Name;
         _hitDie = HitDie;
         _dmgDice = DmgDice;
     }
     #endregion
-    
+
     #region Public Methods
     public string hit()
     {

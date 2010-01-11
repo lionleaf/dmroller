@@ -14,8 +14,8 @@ public class Encounter
 
     #region Constructor Overloads
     public Encounter()
-	{
-		
+    {
+
     }
     #endregion
 

@@ -16,7 +16,7 @@ public class Dice
     private bool _lastCrit = false; // True if the last roll was a crit
     private int _critRange = 0; // Number of sides that crits from the top roll. 0 if it can't crit (not a hit die). 
     // For instance a value of 1 means on a d20 that 20 is a crit, 2 means 19 and 20 and so on.
-    
+
     #endregion
 
     #region Properties
@@ -33,16 +33,16 @@ public class Dice
 
     #region Constructor overloads
     public Dice(int MaxRoll)
-	{
+    {
         _maxRoll = MaxRoll;
-	}
-    
+    }
+
     public Dice(int MaxRoll, bool Positive)
     {
         _positive = Positive;
         _maxRoll = MaxRoll;
     }
-    
+
     public Dice(int MinRoll, int MaxRoll) //Constructor overload in case you need to impose strange dice rules (for instance brutal weapons) 
     {
         _minRoll = MinRoll;
@@ -60,7 +60,7 @@ public class Dice
     #region Public Methods
     public int Roll()
     {
-        _lastRoll = rng.Next(_minRoll,_maxRoll+1);
+        _lastRoll = rng.Next(_minRoll, _maxRoll + 1);
         if (!_positive)
             _lastRoll *= -1;
         return _lastRoll;
