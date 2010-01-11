@@ -4,9 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Text;
 
-/// <summary>
-/// Summary description for Monster
-/// </summary>
 public class Monster
 {
     #region Private Members
@@ -52,11 +49,27 @@ public class Monster
 
         foreach (Ability a in _abilities)
         {
-            sb.Append("<li class=\"Abilityname\">" + a.Name + "<a style=\"float:right\" class=\"Roll\" href=\"javascript:go('d20+" + a.HitBonus + "','" + a.DamageDice.String + "')\">Roll!</a></li>");
+            sb.Append("<li class=\"Abilityname\">" + a.Name);
+			sb.Append("<a style=\"float:right\" class=\"Roll\" href=\"javascript:rollDice('d20+" + a.HitBonus + "','" + a.DamageDice.String + "','" + _name + "')\">Roll!</a></li>");
             sb.Append("<li class=\"Ability\">+" + a.HitBonus + " vs AC;" + a.DamageDice.String + "</li>");
         }
+
+
+		sb.Append("<li class=\"Hit\" id=\""+_name+"_hit\" ");
+		sb.Append("onmouseover=\"ShowContent('"+_name+"_hitdiv'); return true;\" ");
+		sb.Append("onmouseout=\"HideContent('" + _name + "_hitdiv'); return true;\" ");
+		sb.Append("onclick=\"ShowContent('" + _name + "_hitdiv'); return true;\" ></li>");
+
+		sb.Append("<li class=\"Damage\" id=\"" + _name + "_damage\" ");
+		sb.Append("onmouseover=\"ShowContent('" + _name + "_damagediv'); return true;\" ");
+		sb.Append("onmouseout=\"HideContent('" + _name + "_damagediv'); return true;\" ");
+		sb.Append("onclick=\"ShowContent('" + _name + "_damagediv'); return true;\" ></li>");
+
+
         sb.Append("</ul>");
         sb.Append("</div>");
+		sb.Append("<div id=\"" + _name + "_hitdiv\" class=\"MouseOver\"></div>");
+		sb.Append("<div id=\"" + _name + "_damagediv\" class=\"MouseOver\"></div>");
 
 
         return sb.ToString();

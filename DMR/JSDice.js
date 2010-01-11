@@ -9,6 +9,10 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.    
 */
 
+/*
+I have modified the original code quite a bit, so for the original file go to jsdice.com.
+*/
+
 function roll(dice) {
     var dice = dice.replace(/- */, '+ -');
     var dice = dice.replace(/D/, 'd');
@@ -40,20 +44,64 @@ function roll(dice) {
 }
 
 function resultStr(data) {
-    var total = 0;
     var str = "";
     for (var i = 0; i < data.res.length; i++) {
-        total = total + data.res[i];
         if (data.res.length > 1) {
             if (i) str = str + ((data.res[i]) >= 0 ? "+" : "-");
             str = str + Math.abs(data.res[i]);
             if (data.type[i]) str = str + "<sub>[d" + data.type[i] + "]</sub>";
         }
     }
-    str = "<strong>" + total + "</strong>" + (str ? "&nbsp;=&nbsp;" + str : '');
+    str = (str ? str : '');
     return str;
 }
 
+function resultSum(data)
+{
+    var total = 0;
+    for (var i = 0; i< data.res.length;i++)
+    {
+    total += data.res[i];
+    }
+    return total;
+}
+
+
+
+function rollDice(hit, dmg, name) {
+    if (!hit) alert('hay'+hit);
+    if (!dmg) alert('hay'+hit);
+    if (!name) alert('hay'+hit);
+
+    var hitel = document.getElementById(name+'_hit');
+    var hitdiv = document.getElementById(name+'_hitdiv');
+    var dmgel = document.getElementById(name+'_damage');
+    var dmgdiv = document.getElementById(name+'_damagediv');
+    
+    var hitdata = roll(hit);
+    var dmgdata = roll(dmg);
+    if (hitdata) {
+        var hitSum = resultSum(hitdata);
+        var hitStr = resultStr(hitdata);
+        hitel.innerHTML = '<div class="roll_result"><b>Hit:</b>' + hitSum + '</div>';
+        hitdiv.innerHTML = hitStr;
+    }
+    else {
+        hitel.innerHTML = '<div class="roll_source"><small>[<strong><em>Error in the roll formula</em></strong>]</small></div>';
+    }
+    if (dmgdata) {
+        var dmgSum = resultSum(dmgdata);
+        var dmgStr = resultStr(dmgdata);
+        dmgel.innerHTML = '<div class="roll_result"><b>Damage:</b> ' + dmgSum + '</div>';
+        dmgdiv.innerHTML = dmgStr;
+    }
+    else {
+        dmgel.innerHTML = '<div class="roll_source"><small>[<strong><em>Error in the roll formula</em></strong>]</small></div>';
+    }
+}
+
+
+/* Not in use and probably broken
 function rollDice(dice) {
     if (!dice) return;
     
@@ -69,7 +117,7 @@ function rollDice(dice) {
     }
     return result;
 }
-function go(hit, dmg) {
+function rollDice(hit, dmg) {
     if (!hit) return;
     if (!dmg) alert('hay'+hit);
 
@@ -93,3 +141,4 @@ function go(hit, dmg) {
         el.innerHTML += '<div class="roll_source"><small>[<strong><em>Error in the roll formula</em></strong>]</small></div>';
     }
 }
+*/
