@@ -17,6 +17,11 @@ public class Monster
     #endregion
 
     #region Properties
+	public string Name
+	{
+		get { return _name; }
+		set { _name = value; }
+	}
     #endregion
 
     #region Constructor Overload

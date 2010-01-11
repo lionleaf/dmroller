@@ -18,10 +18,8 @@ div.MouseOver
       font-weight:bold;
       background-color: white; 
       padding: 5px;
-      z-index:999; /* This should always be on top! */
-      
+      z-index:999; /* This should always be on top! */ 
 }
-
 
 span.Drag
 {
@@ -67,4 +65,39 @@ a.Crit
 {
 	font-size:large;
 	color:Red;
+}
+
+.AddMobControl
+{
+	width:6em;
+	margin-left: 0.5em;
+	color: #781351;
+	background: #fee3ad;
+	border: 1px solid #781351;
+}
+.AddMobLabel
+{
+	width:6em;
+	float:left;
+	text-align:right;
+	margin-right:0.5em;
+	display:block;
+}
+.AddMobFieldset
+{
+	border: 1px solid #781351;
+	width: 25em;
+}
+.AddMobLegend
+{
+	color: #fff;
+	background-color:#ffa20c;
+	border: 1px solid #781351;
+	padding: 2px 6px;
+}
+#mobAddButton
+{
+	color: #000000;
+	background-color:#ffa20f;
+	border: 2px outset #d7b9c9;
 }
