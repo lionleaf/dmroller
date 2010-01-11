@@ -8,6 +8,7 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.    
 */
+
 function roll(dice) {
     var dice = dice.replace(/- */, '+ -');
     var dice = dice.replace(/D/, 'd');
@@ -68,25 +69,25 @@ function rollDice(dice) {
     }
     return result;
 }
-function go(hit,dmg) {
+function go(hit, dmg) {
     if (!hit) return;
-    if (!dmg) return;
+    if (!dmg) alert('hay'+hit);
 
     var el = document.getElementById('diceResults');
+    
     var hitdata = roll(hit);
     var dmgdata = roll(dmg);
     if (hitdata) {
         var str = resultStr(hitdata);
         el.innerHTML = '';
-        el.innerHTML += 'Hit: <div class="roll_result">' + str + '</div>';
+        el.innerHTML += '<div class="roll_result"><b>Hit:</b>' + str + '</div>';
     }
     else {
         el.innerHTML += '<div class="roll_source"><small>[<strong><em>Error in the roll formula</em></strong>]</small></div>';
     }
     if (dmgdata) {
         var st = resultStr(dmgdata);
-        el.innerHTML += '<br />';
-        el.innerHTML += 'Hit: <div class="roll_result">' + st + '</div>';
+        el.innerHTML += '<div class="roll_result"><b>Damage:</b> ' + st + '</div>';
     }
     else {
         el.innerHTML += '<div class="roll_source"><small>[<strong><em>Error in the roll formula</em></strong>]</small></div>';
