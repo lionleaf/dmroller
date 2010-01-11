@@ -27,23 +27,7 @@
             
             <asp:Button ID="Generate" runat="server" Text="Generate Monster" 
                 onclick="Generate_Click" />
-               
-<a 
-   onmouseover="ShowContent('uniquename3'); return true;"
-   onmouseout="HideContent('uniquename3'); return true;"
-   href="javascript:ShowContent('uniquename3')">
-[show on mouseover, hide on mouseout]
-</a>
-<div 
-   id="uniquename3" 
-   class="MouseOver">
-Content goes here.dsaaadsadsadsasd adsasdadsadsad
-ad s
-ads
-ada ds<br /><br />adsjkadsjkasdkladsjladsklasjdljasldjasldkjaslkdjalskdjalsjdlajksdlkjasdlkjasdlkj
-</div>
-
-                
+                              
             <!-- Test of the monster layout -->
             <div id="Monsterdiv" class="Monster" >
             <span class="Drag" onmousedown="dragStart(event, 'Monsterdiv')">Drag me</span>
@@ -63,11 +47,7 @@ ada ds<br /><br />adsjkadsjkasdkladsjladsklasjdljasldjasldkjaslkdjalskdjalsjdlaj
             
             </ContentTemplate>
             </asp:UpdatePanel>
-            
-            <input type="button" onclick="javascript:go('2d8')" value="Roll" />
-            <div id="diceResults">Her er jeg</div>
-            
-            
+                      
     </div>
     
     </form>
