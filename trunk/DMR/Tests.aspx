@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css.css" />
 <script type="text/javascript" src="JScript.js"></script>
 <script type="text/javascript" src="JSDice.js"></script>
+<script type="text/javascript" src="FloatDiv.js"></script>
     <title></title>
 </head>
 <body>
@@ -15,6 +16,7 @@
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
+        
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:TextBox ID="txt_diceString" runat="server"></asp:TextBox><asp:Button ID="btn_save"
@@ -26,8 +28,23 @@
             <asp:Button ID="Generate" runat="server" Text="Generate Monster" 
                 onclick="Generate_Click" />
                
+<a 
+   onmouseover="ShowContent('uniquename3'); return true;"
+   onmouseout="HideContent('uniquename3'); return true;"
+   href="javascript:ShowContent('uniquename3')">
+[show on mouseover, hide on mouseout]
+</a>
+<div 
+   id="uniquename3" 
+   class="MouseOver">
+Content goes here.dsaaadsadsadsasd adsasdadsadsad
+ad s
+ads
+ada ds<br /><br />adsjkadsjkasdkladsjladsklasjdljasldjasldkjaslkdjalskdjalsjdlajksdlkjasdlkjasdlkj
+</div>
+
                 
-            <!-- Test of the monster layout
+            <!-- Test of the monster layout -->
             <div id="Monsterdiv" class="Monster" >
             <span class="Drag" onmousedown="dragStart(event, 'Monsterdiv')">Drag me</span>
             <ul class="Monster">
@@ -39,9 +56,11 @@
             <li class="Ability">+19 vs AC; 2d8+5</li>
             <li class="Abilityname">Awesome Power</li>
             <li class="Ability">+19 vs AC; 2d8+5</li>
+            <li class="Hit">12=2[d8]+5[d9]+5</li>
+            <li class="Damage">20=8[d8]+5[d9]+7</li>
             </ul>
             </div>
-            -->
+            
             </ContentTemplate>
             </asp:UpdatePanel>
             

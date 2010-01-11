@@ -9,6 +9,20 @@ width:250px;
 position:relative;
 }
 
+div.MouseOver
+{
+	  display:none; 
+      position:absolute; 
+      border-style:solid;
+      border-bottom-width:thin;
+      font-weight:bold;
+      background-color: white; 
+      padding: 5px;
+      z-index:999; /* This should always be on top! */
+      
+}
+
+
 span.Drag
 {
     float:right;
@@ -34,9 +48,17 @@ li.Abilityname
 {
     font-size:large;
     font-weight:bold;
-    background-color:Gray;
+    background-color:#bebebe;
+
 }
 li.Ability
 {
     margin-left:20px;
+}
+
+li.Damage, li.Hit
+{
+	background-color:Black;
+	color:White;
+	font-weight:bold;
 }
