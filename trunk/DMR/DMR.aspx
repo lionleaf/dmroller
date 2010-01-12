@@ -22,50 +22,6 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <asp:UpdatePanel ID="newMonsterUpdatePanel" runat="server">
             <ContentTemplate>
-                <!-- Hide this table shit 
-                <table>
-                <legend>Monster Info</legend>
-                <tr>
-                    <td>What</td><td>input</td><td>help</td>
-                </tr>
-                <tr>
-                    <td>Name:</td><td><asp:TextBox ID="txt_mobname" runat="server"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td>Type:</td>
-                    <td>
-                        <asp:DropDownList ID="ddl_mobTyp3e" runat="server" AutoPostBack="True" 
-                            onselectedindexchanged="ddl_mobType_SelectedIndexChanged">
-                            <asp:ListItem>Standard</asp:ListItem>
-                            <asp:ListItem>Elite</asp:ListItem>
-                            <asp:ListItem>Solo</asp:ListItem>
-                            <asp:ListItem>Minion</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td>HP:</td><td><asp:TextBox ID="txt_mobHP" runat="server"></asp:TextBox></td><td>current/max || max</td>
-                </tr>
-                <tr>
-                    <td>Action Points:</td><td><asp:TextBox ID="txt_mobAP" runat="server" Enabled="false" Width="25"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td>Ability 1:</td><td><asp:TextBox ID="txt_mobAb1Name" runat="server" ></asp:TextBox>
-                        <asp:TextBox ID="txt_mobAb1Hit" runat="server" Width="80"></asp:TextBox>
-                        <asp:TextBox ID="txt_mobAb1DMG" runat="server" Width="80"></asp:TextBox>
-                    </td>
-                    <td>Name|[hit]|dmg</td>
-                </tr>
-                <tr>
-                    <td>Ability 2:</td><td><asp:TextBox ID="txt_mobAb2Name" runat="server" ></asp:TextBox>
-                        <asp:TextBox ID="txt_mobAb2Hit" runat="server" Width="80"></asp:TextBox>
-                        <asp:TextBox ID="txt_mobAb2DMG" runat="server" Width="80"></asp:TextBox>
-                     </td>
-                    <td>Name|[hit]|dmg</td>
-                </tr>
-                </table>
-                -->
-                
                 <fieldset class="AddMobFieldset">
                 <legend class="AddMobLegend">Add Monster</legend>
                 <p>
@@ -80,13 +36,6 @@
                     <option value="Solo">Solo</option>
                     <option value="Minion">Minion</option>
                 </select>
-                    <asp:DropDownList ID="ddl_mobType" runat="server" class="AddMobControl" AutoPostBack="True" 
-                            onselectedindexchanged="ddl_mobType_SelectedIndexChanged">
-                            <asp:ListItem>Minion</asp:ListItem>
-                            <asp:ListItem>Standard</asp:ListItem>
-                            <asp:ListItem>Elite</asp:ListItem>
-                            <asp:ListItem>Solo</asp:ListItem>
-                    </asp:DropDownList>
 
                 </p>
                 <p>
@@ -94,31 +43,50 @@
                 <asp:TextBox ID="mobHP" runat="server" class="AddMobControl">100</asp:TextBox>
                 </p>
                 <p>
+                <div id="mobAbilities">
                 <label class ="AddMobLabel">Action Points</label>
                 <asp:TextBox ID="mobAP" runat="server" class="AddMobControl" Enabled="true" BackColor="GrayText"></asp:TextBox>
-                </p>
-                <p>
-                <label class ="AddMobLabel">Ability 1</label>
-                <asp:TextBox ID="mobAb1Name" runat="server" class="AddMobControl" ToolTip="Name of the Ability">asd</asp:TextBox>
-                <asp:TextBox ID="mobAb1Hit" runat="server" class="AddMobControl" ToolTip="How much bonus does the ability have on the attackroll? A single number">6</asp:TextBox>
-                <asp:TextBox ID="mobAb1Damage" runat="server" class="AddMobControl" ToolTip="Damage, formatted like this: '2d8+5d6+7'">2d8+5d6+7</asp:TextBox>
-                </p>
-                <p>
-                <label class ="AddMobLabel">Ability 2</label>
-                <asp:TextBox ID="mobAb2Name" runat="server" class="AddMobControl" ToolTip="Name of the Ability">gads</asp:TextBox>
-                <asp:TextBox ID="mobAb2Hit" runat="server" class="AddMobControl" ToolTip="How much bonus does the ability have on the attackroll? A single number">9</asp:TextBox>
-                <asp:TextBox ID="mobAb2Damage" runat="server" class="AddMobControl" ToolTip="Damage, formatted like this: '2d8+5d6+7'">2d8+5d6+7</asp:TextBox>
-                </p>
-                <p>
-                <label class ="AddMobLabel">Ability 3</label>
-                <asp:TextBox ID="mobAb3Name" runat="server" class="AddMobControl" ToolTip="Name of the Ability">gas</asp:TextBox>
-                <asp:TextBox ID="mobAb3Hit" runat="server" class="AddMobControl" ToolTip="How much bonus does the ability have on the attackroll? A single number">9</asp:TextBox>
-                <asp:TextBox ID="mobAb3Damage" runat="server" class="AddMobControl" ToolTip="Damage, formatted like this: '2d8+5d6+7'">2d8+5d6+7</asp:TextBox>
-                </p>
-                
-                
-                    <asp:Button ID="mobAddButton" runat="server" Text="Add Monster" OnClick="AddMob"/>
+                    <p>
+                    </p>
+                    <p>
+                        <label class="AddMobLabel">
+                        Ability 1</label>
+                        <asp:TextBox ID="mobAb1Name" runat="server" class="AddMobControl" 
+                            ToolTip="Name of the Ability">asd</asp:TextBox>
+                        <asp:TextBox ID="mobAb1Hit" runat="server" class="AddMobControl" 
+                            ToolTip="How much bonus does the ability have on the attackroll? A single number">6</asp:TextBox>
+                        <asp:TextBox ID="mobAb1Damage" runat="server" class="AddMobControl" 
+                            ToolTip="Damage, formatted like this: '2d8+5d6+7'">2d8+5d6+7</asp:TextBox>
+                    </p>
+                    <p>
+                        <label class="AddMobLabel">
+                        Ability 2</label>
+                        <asp:TextBox ID="mobAb2Name" runat="server" class="AddMobControl" 
+                            ToolTip="Name of the Ability">gads</asp:TextBox>
+                        <asp:TextBox ID="mobAb2Hit" runat="server" class="AddMobControl" 
+                            ToolTip="How much bonus does the ability have on the attackroll? A single number">9</asp:TextBox>
+                        <asp:TextBox ID="mobAb2Damage" runat="server" class="AddMobControl" 
+                            ToolTip="Damage, formatted like this: '2d8+5d6+7'">2d8+5d6+7</asp:TextBox>
+                    </p>
+                    <p>
+                        <label class="AddMobLabel">
+                        Ability 3</label>
+                        <asp:TextBox ID="mobAb3Name" runat="server" class="AddMobControl" 
+                            ToolTip="Name of the Ability">gas</asp:TextBox>
+                        <asp:TextBox ID="mobAb3Hit" runat="server" class="AddMobControl" 
+                            ToolTip="How much bonus does the ability have on the attackroll? A single number">9</asp:TextBox>
+                        <asp:TextBox ID="mobAb3Damage" runat="server" class="AddMobControl" 
+                            ToolTip="Damage, formatted like this: '2d8+5d6+7'">2d8+5d6+7</asp:TextBox>
+                    </p>
+                    </div> 
+                    <input onclick="NewAbility()" type="button" value="New ability" /><br />
+                    <asp:Button ID="checkButton" runat="server" onclick="checkButton_Click" 
+                        Text="this button is better" />
+                    <asp:Button ID="mobAddButton" runat="server" OnClick="AddMob" 
+                        Text="Add Monster" />
                     <asp:Label ID="lab_output" runat="server" Text=""></asp:Label>
+                </p>
+                               
                     </fieldset>
             </ContentTemplate>
         </asp:UpdatePanel>
