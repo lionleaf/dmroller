@@ -31,7 +31,7 @@ public partial class index : System.Web.UI.Page
     }
     protected void AddMob(object sender, EventArgs e)
     {
-		//This be ugly! Need to make it more flexible for an unknown amount of abilites! This is just for testing.
+		//This be ugly! Need to make it more flexible for an unknown amount of abilites! This is just for testing. Yo momma's ugly.
 		Ability[] abilities = {new Ability(mobAb1Name.Text, new DiceSet("d20+"+mobAb1Hit.Text),new DiceSet(mobAb1Damage.Text)),
 								new Ability(mobAb2Name.Text, new DiceSet("d20+"+mobAb2Hit.Text),new DiceSet(mobAb2Damage.Text)),
 								new Ability(mobAb3Name.Text, new DiceSet("d20+"+mobAb3Hit.Text),new DiceSet(mobAb3Damage.Text))
@@ -58,28 +58,29 @@ public partial class index : System.Web.UI.Page
     }
     protected void ddl_mobType_SelectedIndexChanged(object sender, EventArgs e)
     {
-        switch (ddl_mobType.SelectedValue) //fuck this shit is ugly
-        {
-            case "Standard":
-                txt_mobAP.Text = "0";
-                txt_mobHP.Text = "";
-                txt_mobHP.Enabled = true;
-                break;
-            case "Minion":
-                txt_mobAP.Text = "0";
-                txt_mobHP.Text = "1";
-                txt_mobHP.Enabled = false;
-                break;
-            case "Elite":
-                txt_mobAP.Text = "1";
-                txt_mobHP.Text = "";
-                txt_mobHP.Enabled = true;
-                break;
-            case "Solo":
-                txt_mobAP.Text = "2";
-                txt_mobHP.Text = "";
-                txt_mobHP.Enabled = true;
-                break;
-        }
+     switch (ddl_mobType.SelectedValue) //fuck this shit is ugly
+     {
+         case "Standard":
+             txt_mobAP.Text = "0";
+             txt_mobHP.Text = "";
+             txt_mobHP.Enabled = true;
+             break;
+         case "Minion":
+             txt_mobAP.Text = "0";
+             txt_mobHP.Text = "1";
+             txt_mobHP.Enabled = false;
+             break;
+         case "Elite":
+             txt_mobAP.Text = "1";
+             txt_mobHP.Text = "";
+             txt_mobHP.Enabled = true;
+             break;
+         case "Solo":
+             txt_mobAP.Text = "2";
+             txt_mobHP.Text = "";
+             txt_mobHP.Enabled = true;
+             break;
+      }
     }
+
 }

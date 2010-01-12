@@ -8,7 +8,7 @@ public class Encounter
 {
     #region Private Members
     List<Monster> _monsters = new List<Monster>();
-	int _nameIncrementer = 1; //To handle multiple names, the names has to be unique, we add a number if they are equal.
+	int _nameIncrementer = 1; //To handle multiple names, the names has to be unique, we add a number if the .
     #endregion
 
     #region Properties

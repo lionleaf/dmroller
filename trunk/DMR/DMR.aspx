@@ -18,7 +18,7 @@
             <asp:Label runat="server" ID="MainLabel" Text=""></asp:Label>
     <input type="button" onclick="ToggleVisibility('maindiv', 'inputareadiv')" value="Create New Monster"/>
     </div>
-    <div id="inputareadiv" style="display:none;">
+    <div id="inputareadiv" style="display:block;">
         <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <asp:UpdatePanel ID="newMonsterUpdatePanel" runat="server">
             <ContentTemplate>
@@ -34,7 +34,7 @@
                 <tr>
                     <td>Type:</td>
                     <td>
-                        <asp:DropDownList ID="ddl_mobType" runat="server" AutoPostBack="True" 
+                        <asp:DropDownList ID="ddl_mobTyp3e" runat="server" AutoPostBack="True" 
                             onselectedindexchanged="ddl_mobType_SelectedIndexChanged">
                             <asp:ListItem>Standard</asp:ListItem>
                             <asp:ListItem>Elite</asp:ListItem>
@@ -70,17 +70,24 @@
                 <legend class="AddMobLegend">Add Monster</legend>
                 <p>
                 <label class ="AddMobLabel">Name</label>
-                <asp:TextBox ID="mobName" runat="server" class="AddMobControl" Width="19.5em">Andreas</asp:TextBox>
+                <asp:TextBox ID="mobName" runat="server" class="AddMobControl" Width="19.5em" name="niggerbox"></asp:TextBox>
                 </p>
                 <p>
                 <label class ="AddMobLabel">Type</label>
-                <asp:DropDownList ID="mobType" runat="server" class="AddMobControl" AutoPostBack="True" 
+                <select onchange="mobTypeChanged(this, mobHP, mobAP)" runat="server" id="mobType">
+                    <option value="Normal">Normal</option>
+                    <option value="Elite">Elite</option>
+                    <option value="Solo">Solo</option>
+                    <option value="Minion">Minion</option>
+                </select>
+                    <asp:DropDownList ID="ddl_mobType" runat="server" class="AddMobControl" AutoPostBack="True" 
                             onselectedindexchanged="ddl_mobType_SelectedIndexChanged">
                             <asp:ListItem>Minion</asp:ListItem>
                             <asp:ListItem>Standard</asp:ListItem>
                             <asp:ListItem>Elite</asp:ListItem>
                             <asp:ListItem>Solo</asp:ListItem>
-                            </asp:DropDownList>
+                    </asp:DropDownList>
+
                 </p>
                 <p>
                 <label class ="AddMobLabel">HP</label>
@@ -88,7 +95,7 @@
                 </p>
                 <p>
                 <label class ="AddMobLabel">Action Points</label>
-                <asp:TextBox ID="mobAP" runat="server" class="AddMobControl" Enabled="false" BackColor="GrayText"></asp:TextBox>
+                <asp:TextBox ID="mobAP" runat="server" class="AddMobControl" Enabled="true" BackColor="GrayText"></asp:TextBox>
                 </p>
                 <p>
                 <label class ="AddMobLabel">Ability 1</label>
