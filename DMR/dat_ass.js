@@ -12,14 +12,33 @@
         }
     }
     
+    
+function Dat_Error(object, type) //AND I THINK IT'S GONNA BE A LONG LONG TIME, 'TILL TOUCHDOWN BRINGS ME 'ROUND AGAIN TO FIND, THIS FUNCTION REALLY AIN'T THAT WELL PLANNED
+{  
+    switch (type)
+    {
+        case 'textnum': 
+            var notallowed = new RegExp(/[^A-Za-z0-9_]/);
+            break;
+        case 'num':
+            var notallowed = new RegExp(/[^0-9]/);
+            break;
+        case 'text':
+            var notallowed = new RegExp(/[^A-Za-z0-9_]/);
+            break;
+        default:
+            break;
+    
+    }
+    var objectText = object.value;
+    if (notallowed.exec(objectText))
+    {
+        alert("look at that, you fucked up by placing illegal characters in" + object.name); //THIS ISN'T WHAT THEY THINK IT'S SUPPOSED TO BE BACK HOME
+    }
+}
 function NewAbility() //she packed my bags last night, pre-flight, zero hour, nine AM
 {
     document.getElementById('mobAbilities').innerHTML += '<input type=\"text\" runat=\"server\" class=\"AddMobControl\" id=\"TESTIT\" title=\"penis\"';
-    
-    var d = document.getElementById('mobAbilities');
-    d.appendChild('<h1>hello</h1>');
-
-
 }
 function mobTypeChanged(list, HPBox, APBox)//I HOPE I CAN KILL AND STAY THE SAME NANAENINAUNUN UN UNU NUNNNAEN
     {

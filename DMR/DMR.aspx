@@ -26,7 +26,7 @@
                 <legend class="AddMobLegend">Add Monster</legend>
                 <p>
                 <label class ="AddMobLabel">Name</label>
-                <asp:TextBox ID="mobName" runat="server" class="AddMobControl" Width="19.5em" name="niggerbox"></asp:TextBox>
+                <asp:TextBox ID="mobName" runat="server" class="AddMobControl" Width="19.5em" onchange="javascript:Dat_Error(this, 'textnum')"></asp:TextBox>
                 </p>
                 <p>
                 <label class ="AddMobLabel">Type</label>
@@ -40,12 +40,12 @@
                 </p>
                 <p>
                 <label class ="AddMobLabel">HP</label>
-                <asp:TextBox ID="mobHP" runat="server" class="AddMobControl">100</asp:TextBox>
+                <asp:TextBox ID="mobHP" runat="server" class="AddMobControl" onchange="javascript:Dat_Error(this, 'num')">100</asp:TextBox>
                 </p>
                 <p>
                 <div id="mobAbilities">
                 <label class ="AddMobLabel">Action Points</label>
-                <asp:TextBox ID="mobAP" runat="server" class="AddMobControl" Enabled="true" BackColor="GrayText"></asp:TextBox>
+                <asp:TextBox ID="mobAP" runat="server" class="AddMobControl" Enabled="true" BackColor="GrayText" onchange="javascript:Dat_Error(this, 'num')"></asp:TextBox>
                     <p>
                     </p>
                     <p>
