@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED WAR
 */
 
 /*
-I have modified the original code quite a bit, so for the original file go to jsdice.com.
+The original code is pretty much rewritten, except for the roll(dice) function (no point in reinventing the wheel), so for the original file go to jsdice.com.
 */
 
 function roll(dice) {
@@ -42,6 +42,38 @@ function roll(dice) {
     if (res.length == 0) return null;
     return { "res": res, "type": type };
 }
+
+
+function critroll(dice) {
+    var dice = dice.replace(/- */, '+ -');
+    var dice = dice.replace(/D/, 'd');
+    var re = / *\+ */;
+    var items = dice.split(re);
+    var res = new Array();
+    var type = new Array();
+    for (var i = 0; i < items.length; i++) {
+        var match = items[i].match(/^[ \t]*(-)?(\d+)?(?:(d)(\d+))?[ \t]*$/);
+        if (match) {
+            var sign = match[1] ? -1 : 1;
+            var num = parseInt(match[2] || "1");
+            var max = parseInt(match[4] || "0");
+            if (match[3]) {
+                for (j = 1; j <= num; j++) {
+                    res[res.length] = sign * max;
+                    type[type.length] = max;
+                }
+            }
+            else {
+                res[res.length] = sign * num;
+                type[type.length] = 0;
+            }
+        }
+        else return null;
+    }
+    if (res.length == 0) return null;
+    return { "res": res, "type": type };
+}
+
 
 function resultStr(data) {
     var str = "";
@@ -79,20 +111,29 @@ function rollDice(hit, dmg, name) {
     var dmgdiv = document.getElementById(name+'_damagediv');
     
     var hitdata = roll('d20+'+hit);
-    var dmgdata = roll(dmg);
+    
+    var crit = false;
     if (hitdata) {
         var hitSum = resultSum(hitdata);
         var hitStr = resultStr(hitdata);
-        hitel.innerHTML = '<div class="roll_result"><b>Hit:</b>' + hitSum +((hitSum-20)==hit?' <a class="Crit">CRIT</a>':'')+'</div>';
+        var dieSize=20;
+        if (hitSum - dieSize == hit) {
+            crit = true;
+
+        }
+        hitel.innerHTML = '<div class="roll_result"><b>Hit:</b>' +(crit?' <a class="Crit">'+ hitSum +' CRIT</a>':hitSum)+'</div>';
         hitdiv.innerHTML = hitStr;
     }
     else {
         hitel.innerHTML = '<div class="roll_source"><small>[<strong><em>Error in the roll formula</em></strong>]</small></div>';
     }
+
+    var dmgdata = crit?critroll(dmg):roll(dmg);
+    
     if (dmgdata) {
         var dmgSum = resultSum(dmgdata);
         var dmgStr = resultStr(dmgdata);
-        dmgel.innerHTML = '<div class="roll_result"><b>Damage:</b> ' + dmgSum + '</div>';
+        dmgel.innerHTML = '<div class="roll_result"><b>Damage:</b> '+(crit ? ' <a class="Crit">' + dmgSum + '</a>' : dmgSum)+ '</div>';
         dmgdiv.innerHTML = dmgStr;
     }
     else {
