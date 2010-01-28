@@ -11,7 +11,16 @@
             document.getElementById(two).style.display = "block";
         }
     }
+
     
+function NewAbility() //she packed my bags last night, pre-flight, zero hour, nine AM
+{
+    document.getElementById('mobAbilities').innerHTML += '<input type=\"text\" runat=\"server\" class=\"AddMobControl\" id=\"TESTIT\" title=\"penis\"';
+    
+    var d = document.getElementById('mobAbilities');
+    d.appendChild('<h1>hello</h1>');
+
+
     
 function Dat_Error(object, type) //AND I THINK IT'S GONNA BE A LONG LONG TIME, 'TILL TOUCHDOWN BRINGS ME 'ROUND AGAIN TO FIND, THIS FUNCTION REALLY AIN'T THAT WELL PLANNED
 {  

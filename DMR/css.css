@@ -95,9 +95,13 @@ a.Crit
 	border: 1px solid #781351;
 	padding: 2px 6px;
 }
-#mobAddButton
+.Button
 {
 	color: #000000;
 	background-color:#ffa20f;
 	border: 2px outset #d7b9c9;
+}
+.hidden
+{
+    display:none;
 }
