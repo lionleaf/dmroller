@@ -6,12 +6,12 @@
   * Bloodied status
   * Conditions
   * Remove mobs
-  * Remove abilities on AddMob
+  * Remove abilities on Add-Mob
   * Save location?
- * List of Encounters
- * Save Encounters? (DB?)
- * 
- * 
+  * List of Encounters
+  * Save Encounters? (DB?)
+  * 
+  * 
 
 = Fixes =
  * 
