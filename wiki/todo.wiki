@@ -1,16 +1,22 @@
-#summary One-sentence summary of this page.
+#summary Ting som gjenstår
 
-= Introduction =
+= Features =
 
-Add your content here.
-
-
-= Details =
-
-Todo:
   * Remove and add hp
   * Bloodied status
   * Conditions
   * Remove mobs
   * Remove abilities on AddMob
-  * 
+  * Save location?
+ * List of Encounters
+ * Save Encounters? (DB?)
+ * 
+ * 
+
+= Fixes =
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
