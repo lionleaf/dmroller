@@ -29,7 +29,7 @@ public class Monster
 	{
 		_name = name;
 		_maxHealth = _health = MaxHP;
-		_bloodiedHealth = MaxHP / 2; //How this work?
+		_bloodiedHealth = MaxHP / 2; //How this work? What work? What use?
 		foreach (Ability a in abilities)
 		{
 			_abilities.Add(a);
