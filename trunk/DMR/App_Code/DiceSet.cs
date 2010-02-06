@@ -31,7 +31,7 @@ public class DiceSet
 
 	#region Constructor Overloads
 
-	public DiceSet(string DiceString)
+	public DiceSet(string DiceString) 
 	{
 		_diceString = DiceString;
 		DecodeString(_diceString);
@@ -87,8 +87,7 @@ public class DiceSet
 	private bool AddDice(string input)
 	{
 		//Here we should add logic to check whether the input is valid.
-
-
+        //Why should we do this? We've already run the RegEx in DecodeString. Error in the input should be checked way earlier on anyway; if it's bad input and has gotten this far we're already screwed.
 		int dPos = -1;
 		bool positive;
 		int numberOfDice;
@@ -118,7 +117,6 @@ public class DiceSet
 			y++;
 		}
 
-
 		if (dPos == 1) //Means 1 die. Remember here that every string starts with + or -.
 			numberOfDice = 1;
 		else
@@ -129,9 +127,9 @@ public class DiceSet
 
 		for (int i = 0; i < numberOfDice; i++)
 		{
-			_dice.Add(new Dice(diceSize));
+			_dice.Add(new Dice(diceSize, positive)); //Why does it not overload with the positive variable here? 
+                                                     //I fixed it. Will it break it?
 		}
-
 
 		return true; //it worked!
 	}

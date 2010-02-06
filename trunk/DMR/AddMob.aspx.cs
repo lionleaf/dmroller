@@ -29,21 +29,20 @@ public partial class index : System.Web.UI.Page
 
 	protected Ability[] ExtractAbilities(string Names, string Hits, string Damages)  //Gets an array from three strings seperated by ;. "ab1;ab2","20;10","2d6;3d4" will return two abilities: ab1 and ab2, ab1 has +20 hit and 2d6 damage, while ab2 has +10 hit and 3d4 damage.
 	{
-
 		string[] name = Names.Split(';');
 		string[] hit = Hits.Split(';');
 		string[] damage = Damages.Split(';');
 
-		if (!(name.Length == hit.Length && hit.Length == damage.Length)) return null;
+		if (!(name.Length == hit.Length && hit.Length == damage.Length)) return null; //Input in each field is required for each ability is required -- some later form of errorchecking?
 
-		Ability[] result = new Ability[name.Length];
+		Ability[] result = new Ability[name.Length]; //Declare (name.Length) instances of Ability class. This corresponds with the amount of abilities the mob has
 		for (int i = 0; i < name.Length; i++)
 		{
-			result[i] = new Ability(name[i], new DiceSet("d20+" + hit[i]), new DiceSet(damage[i]));
+			result[i] = new Ability(name[i], new DiceSet("d20+" + hit[i]), new DiceSet(damage[i]));  //Creates a new ability and puts it into the result array. DiceSet overload used: DiceSet(string DiceString)
 		}
 		return result;
 	}
-	protected void AddMob(object sender, EventArgs e)   // Run onsubmit of the form
+	protected void AddMob(object sender, EventArgs e) // Run onsubmit of the form
 	{
 		Ability[] abilities = ExtractAbilities(mobAb1Name.Text, mobAb1Hit.Text, mobAb1Damage.Text);
 		try
@@ -59,12 +58,6 @@ public partial class index : System.Web.UI.Page
 		{
 			mobHP.Style.Add(HtmlTextWriterStyle.BackgroundColor, "red");
 		}
-
-
-
-		//Run javascript for toggling visibility if input checks out ok
-		//btn_submit.Attributes.Add("onclick", "javascript:toggle('divtest', 'divmain')
-
 	}
 	protected void Button2_Click(object sender, EventArgs e)
 	{
