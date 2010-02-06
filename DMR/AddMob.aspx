@@ -12,8 +12,9 @@
 <body>
 
 <script type="text/javascript">
-    var abilities = 1;
-    function AddMob() {
+    var abilities = 1; //The amount of ability the mob has.
+    function AddMob() //This is what happens when you add a mob.
+    {
         var abName = document.getElementById('mobAb1Name');
         var abHit = document.getElementById('mobAb1Hit');
         var abDamage = document.getElementById('mobAb1Damage');
@@ -24,15 +25,14 @@
             abHit.value += document.getElementById('mobAb' + i + 'Hit').value;
             abDamage.value += ";";
             abDamage.value += document.getElementById('mobAb' + i + 'Damage').value;
-        }
+            }
 
-        document.getElementById('hiddenSubmit').click();
-        window.opener.document.getElementById('refreshButton').click();
-        window.close();
-        
-
+        document.getElementById('hiddenSubmit').click(); //Clicks the 'submit' button to get the C# code cracking.
+        window.opener.document.getElementById('refreshButton').click(); //Hits the refresh button.
+        window.close(); //Closes the window.
     }
-    function NewAbility(divID) {
+    function NewAbility(divID) //In turn, this is what happens when you add a new ability input field.
+    {
         var d = document.getElementById(divID);
         abilities++;
         d.innerHTML += '<p>';

@@ -11,18 +11,7 @@
             document.getElementById(two).style.display = "block";
         }
     }
-
-    
-function NewAbility() //she packed my bags last night, pre-flight, zero hour, nine AM
-{
-    document.getElementById('mobAbilities').innerHTML += '<input type=\"text\" runat=\"server\" class=\"AddMobControl\" id=\"TESTIT\" title=\"penis\"';
-    
-    var d = document.getElementById('mobAbilities');
-    d.appendChild('<h1>hello</h1>');
-
-
-    
-function Dat_Error(object, type) //AND I THINK IT'S GONNA BE A LONG LONG TIME, 'TILL TOUCHDOWN BRINGS ME 'ROUND AGAIN TO FIND, THIS FUNCTION REALLY AIN'T THAT WELL PLANNED
+function Dat_Error(object, type) //Used to check for input errors, client-side. REGEX Y'ALL.
 {  
     switch (type)
     {
@@ -37,19 +26,14 @@ function Dat_Error(object, type) //AND I THINK IT'S GONNA BE A LONG LONG TIME, '
             break;
         default:
             break;
-    
     }
     var objectText = object.value;
     if (notallowed.exec(objectText))
     {
-        alert("look at that, you fucked up by placing illegal characters in" + object.name); //THIS ISN'T WHAT THEY THINK IT'S SUPPOSED TO BE BACK HOME
+        alert("look at that, you fucked up by placing illegal characters in" + object.name);
     }
 }
-function NewAbility() //she packed my bags last night, pre-flight, zero hour, nine AM
-{
-    document.getElementById('mobAbilities').innerHTML += '<input type=\"text\" runat=\"server\" class=\"AddMobControl\" id=\"TESTIT\" title=\"penis\"';
-}
-function mobTypeChanged(list, HPBox, APBox)//I HOPE I CAN KILL AND STAY THE SAME NANAENINAUNUN UN UNU NUNNNAEN
+function mobTypeChanged(list, HPBox, APBox)//Sets stuff according to mob type as per D&D4.0 rules.
     {
         switch (list.value)
         {
