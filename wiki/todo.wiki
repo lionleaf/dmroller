@@ -14,7 +14,7 @@
   * 
 
 = Fixes =
- * 
+ * Sjekke input. (æøå funker ikke)
  * 
  * 
  * 
