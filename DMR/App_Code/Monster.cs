@@ -8,12 +8,13 @@ public class Monster
 {
 	#region Private Members
 	private int _actionPoints = 0;
-	private int _health;
-	private int _maxHealth;
-	private int _bloodiedHealth;
+	private int _health; //Current hp
+	private int _maxHealth; //Max hp
+	private int _bloodiedHealth; //Half of max hp
 	private List<string> _conditions = new List<string>();
 	private List<Ability> _abilities = new List<Ability>();
 	private string _name;
+    private MonsterType _type = MonsterType.Undefined;
 	#endregion
 
 	#region Properties
@@ -56,7 +57,18 @@ public class Monster
 		{
 			sb.Append("<li class=\"Abilityname\">" + a.Name);
 			sb.Append("<a style=\"float:right\" class=\"Roll\" href=\"javascript:rollDice('" + a.HitBonus + "','" + a.DamageDice.String + "','" + _name + "')\">Roll!</a></li>");
-			sb.Append("<li class=\"Ability\">+" + a.HitBonus + " vs AC;" + a.DamageDice.String + "</li>");
+            sb.Append("<li class=\"Ability\">+" + a.HitBonus);
+            if(a.DefenseTargeted != Defense.Undefined)  //If the defense targeted by the ability is undefined, don't print "vs Undefined".
+            {
+                sb.Append(" vs "+a.DefenseTargeted.ToString());
+            }
+            sb.Append(";" + a.DamageDice.String + "</li>");
+
+            if (a.ExtraInfo != "")
+            {
+                sb.Append("<li class=\"Ability\">" + a.ExtraInfo);
+                sb.Append("</li>");
+            }
 		}
 
 

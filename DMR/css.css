@@ -67,27 +67,9 @@ a.Crit
 	color:Red;
 }
 
-.AddMobControl
-{
-	width:6em;
-	margin-left: 0.5em;
-	color: #781351;
-	background: #fee3ad;
-	border: 1px solid #781351;
-}
-.AddMobLabel
-{
-	width:6em;
-	float:left;
-	text-align:right;
-	margin-right:0.5em;
-	display:block;
-}
-.AddMobFieldset
-{
-	border: 1px solid #781351;
-	width: 25em;
-}
+
+
+/* ADD MOB STUFF */
 .AddMobLegend
 {
 	color: #fff;
@@ -95,6 +77,91 @@ a.Crit
 	border: 1px solid #781351;
 	padding: 2px 6px;
 }
+
+.AddMobFieldset
+{
+	border: 1px solid #781351;
+	width: 380px;
+}
+
+.AddMobAbName,.AddMobAbHit,.AddMobAbDamage,.AddMobControl,.AddMobName, .AddMobAbInfo
+{
+	margin-left: 5px;
+	color: #781351;
+	background: #fee3ad;
+	border: 1px solid #781351;
+}
+
+
+
+.AddMobLabel
+{
+	width:90px;
+	float:left;
+	text-align:right;
+	margin-right:5px;
+	display:block;
+}
+
+
+.AddMobName
+{
+    width:185px;
+}
+
+.AddMobControl
+{
+    width:50px;
+}
+
+
+.AbilityFieldset
+{
+	border: 1px solid #781351;
+	width: 275px;
+}
+
+.abLabel
+{
+    width:50px;
+	float:left;
+	text-align:right;
+	margin-right:5px;
+	display:block;
+}
+
+.AddMobAbName
+{
+    width:180px;
+}
+
+.AddMobAbHit
+{
+    width:20px;
+}
+
+.AddMobAbDef
+{
+    width:80px;
+}
+  
+.AddMobAbDamage
+{
+    width:120px;
+}
+
+.AddMobAbInfo
+{
+    width:180px;
+}
+
+
+
+/* END ADD MOB STUFF */
+
+
+
+
 .Button
 {
 	color: #000000;

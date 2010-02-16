@@ -15,23 +15,25 @@ function Dat_Error(object, type) //Used to check for input errors, client-side. 
 {  
     switch (type)
     {
-        case 'textnum': 
-            var notallowed = new RegExp(/[^A-Za-z0-9_]/);
+        case 'dice': 
+            var notallowed = new RegExp(/[^dD+\-0-9_]/);
             break;
         case 'num':
             var notallowed = new RegExp(/[^0-9]/);
             break;
         case 'text':
-            var notallowed = new RegExp(/[^A-Za-z0-9_]/);
+            var notallowed = new RegExp(/[^A-Za-z0-9_\s]/);
             break;
         default:
             break;
     }
     var objectText = object.value;
-    if (notallowed.exec(objectText))
-    {
-        alert("look at that, you fucked up by placing illegal characters in" + object.name);
+    if (objectText == "")
+        return true;
+    if (notallowed.exec(objectText)) {
+        return true;
     }
+    else return false;
 }
 function mobTypeChanged(list, HPBox, APBox)//Sets stuff according to mob type as per D&D4.0 rules.
     {
