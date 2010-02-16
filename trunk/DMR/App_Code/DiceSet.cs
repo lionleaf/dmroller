@@ -7,16 +7,16 @@ using System.Text.RegularExpressions;
 using System.Text;
 
 /// <summary>
-/// Summary description for DiceSet
+/// Contains a set of Dice. Currently not in active use, since the rolling is done by javascript in the web version.
 /// </summary>
 public class DiceSet
 {
 	#region Private Members
-	private Regex _dr = new Regex(@"[+-]?[0-9]*[dD][0-9]+"); //Regex to get out every single set of dice
-	private Regex _br = new Regex(@"[+-][0-9]*"); //Regex to get out the static bonus to the roll 
+	private Regex _diceRegex = new Regex(@"[+-]?[0-9]*[dD][0-9]+"); //Regex to get out every single set of dice
+	private Regex _bonusRegex = new Regex(@"[+-][0-9]*"); //Regex to get out the static bonus to the roll 
 	private List<Dice> _dice = new List<Dice>(); //List of all the dice in the DiceSet
 	private int bonus = 0; //The static bonus to the roll
-	private int _lastSum = -1;
+	private int _lastSum = -1; //The sum of the last result. -1 indicates no rolls yet.
 	private string _diceString; //The string of the DiceSet, for instance "2d6+2d4+7"
 	#endregion
 
@@ -31,14 +31,14 @@ public class DiceSet
 
 	#region Constructor Overloads
 
-	public DiceSet(string DiceString) 
+	public DiceSet(string DiceString) //DiceString is a string of the type: "2d6+8"
 	{
 		_diceString = DiceString;
 		DecodeString(_diceString);
 
 	}
 
-	public DiceSet(Dice[] dice, int bonus)
+	public DiceSet(Dice[] dice, int bonus) //Accepts an array of dice, and a seperate bonus, and combines them.
 	{
 		foreach (Dice die in dice)
 		{
@@ -47,7 +47,7 @@ public class DiceSet
 		this.bonus = bonus;
 	}
 
-	public DiceSet(Dice[] dice)
+	public DiceSet(Dice[] dice)  //Same as the one above, but without the bonus
 	{
 		foreach (Dice die in dice)
 		{
@@ -69,14 +69,14 @@ public class DiceSet
 		_dice.Clear(); //Clear the dice as well. To make sure we don't add to the last one.
 
 
-		while (_dr.IsMatch(input)) //We loop through the string and take out every diceset
+		while (_diceRegex.IsMatch(input)) //We loop through the string and take out every diceset
 		{
-			AddDice(_dr.Match(input).ToString()); //We send the DiceSet to AddDice() to add it to the list of dice.
-			input = input.Remove(_dr.Match(input).Index, _dr.Match(input).Length); //Then remocve
+			AddDice(_diceRegex.Match(input).ToString()); //We send the DiceSet to AddDice() to add it to the list of dice.
+			input = input.Remove(_diceRegex.Match(input).Index, _diceRegex.Match(input).Length); //Then remocve
 		}
 
 
-		foreach (Match match in _br.Matches(input)) //We find the static bonus and and add it to _bonus
+		foreach (Match match in _bonusRegex.Matches(input)) //We find the static bonus and and add it to _bonus
 		{
 			string str = match.ToString();
 			bonus += Convert.ToInt32(str.ToString()); //We convert the string with the bonus to the integer "bonus"       
@@ -86,8 +86,9 @@ public class DiceSet
 	}
 	private bool AddDice(string input)
 	{
-		//Here we should add logic to check whether the input is valid.
-        //Why should we do this? We've already run the RegEx in DecodeString. Error in the input should be checked way earlier on anyway; if it's bad input and has gotten this far we're already screwed.
+		//Here we should add logic to check whether the input is valid. 
+        //Even though we'd expect it to be "clean" by now, it's always good to make a second check. 
+        //(Who knows, someone might be able to call the function in a context we did not think about)
 		int dPos = -1;
 		bool positive;
 		int numberOfDice;

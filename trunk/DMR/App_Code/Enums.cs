@@ -10,16 +10,26 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
-enum MonsterType
+public enum MonsterType
 {
+    Undefined,
 	Minion, 
 	Standard, 
 	Elite, 
 	Solo
 }
 
+public enum Defense
+{
+    Undefined,
+    AC,
+    Reflex,
+    Fortitude,
+    Will
+}
+
 [Flags]
-enum Condition : uint //No need for signing. This is bitflags.
+public enum Condition : uint //No need for signing. This is bitflags.
 {
 	None = 0,
 	Blinded = 0x1,			// (00000000000000000000000000000001)
@@ -40,7 +50,7 @@ enum Condition : uint //No need for signing. This is bitflags.
 	Weakened = 0x8000		// (00000000000000001000000000000000)
 }
 
-enum State
+public enum State
 {
 	Unscathed,
 	Damaged,
