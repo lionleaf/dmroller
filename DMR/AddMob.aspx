@@ -133,7 +133,7 @@
         tempString += '<input type=\"text\" ID=\"mobAb' + abilities + 'Damage\" class=\"AddMobAbDamage\" ToolTip=\"Damage, formatted like this: \'2d8+5d6+7\'\"></input>';
         tempString += '<br />';
         tempString += '<label class=\"abLabel\">Info</label>';
-        tempString += '<textarea id=\"mobAb' + abilities + 'Info\" class=\"AddMobAbInfo\" tooltip=\"Additional info about the ability. Optional.\"></textarea>';
+        tempString += '<textarea id=\"mobAb' + abilities + 'Info\" class=\"AddMobAbInfo\" ToolTip=\"\"></textarea>';
         tempString += '</fieldset>';
         tempString += '</p>';
 
@@ -203,7 +203,7 @@
                             <br />
                             <label class="abLabel">Info</label>
                             <asp:TextBox TextMode="MultiLine" ID="mobAb1Info" runat="server" class="AddMobAbInfo" 
-                            ToolTip="Name of the Ability">Additional info (optional)</asp:TextBox>
+                            ToolTip="Name of the Ability"></asp:TextBox>
                     
                     </fieldset>
                     </p>
