@@ -1,0 +1,35 @@
+Hvordan DecodeString(string input) fungerer:
+DecodeString tar imot en streng som er et sett med en eller flere terninger og en bonus.
+
+La oss si at vi får strengen "3d8-5d9+2d6+10"
+Først sjekker vi om den første karakteren er + eller -. Hvis den ikke er det legges + til (dette betyr at det første terningsettet er positivt).
+
+Vi kjører et regexmønster, @"[+-]?[0-9]*[dD][0-9]+", gjennom strengen for å hente ut terningsett på formatet "+xDn"
+(Denne regexstrengen leter etter null eller en forekomster av + eller-, så null eller flere forekomster av tall mellom 0 og 9, så d eller D, så en eller flere forekomster av tall mellom 0 og 9.)
+Hver gang regexmønsteret matches med en del av strengen sendes den delen til AddDice(string input). Matchen fjernes også fra strengen.
+
+Så kjøres et annet regexmønster, @"[+-][0-9]*", gjennom strengen.
+Dette mønsteret matcher + eller - en gang, så tall mellom 0 og 9 en eller flere ganger. Etter at det første regexmønsteret har blitt kjørt vil det som er igjen av strengen se ut slik: "+x-y+z". Bonusene konverteres til int og legges sammen.
+
+
+
+
+Hvordan AddDice(string input) fungerer:
+input = en tekststring som inneholder et terningsett på formatet "+nDx"
+her er n og x heltall.
+n kan unnlates
++ kan enten være '+' eller '-'
+D er bokstaven d eller D
+
+Hva som skjer:
+Først sjekkes det om terningsettet er positivt eller negativt (en ability kan ha flere terningsett og det er ikke sikkert man legger til alle)
+Hvis den første karakteren er - er terningsettet "negativt"
+Hvis den første karakteren er + er terningsettet "positivt"
+Hvis den første karakteren hverken er + eller -, antas det at terningen er positiv og karakteren + legges til helt i starten av strengen.
+
+Så finner vi hvor i strengen D'en er ved å gå gjennom alle karakterene til vi finner den. Posisjonen lagres.
+
+Hvis posisjonen = 1, betyr det at D'en befant seg på plass #2, og antall terninger er 1 (pos1 = +/- (0), pos2 = D(1))
+Hvis posisjonen ikke er 1, trekkes tallene som står mellom +/- i starten og D'en ut og lagres som antall terninger som skal rulles.
+
+Tallene bak D'en vil i alle tilfeller som forekommer i koden vår være størrelsen på terningen.
